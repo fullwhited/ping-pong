@@ -1,4 +1,4 @@
-from pygame import *
+rom pygame import *
 import socket
 import json
 from threading import Thread
@@ -63,7 +63,7 @@ while True:
         continue  # Не малюємо гру до завершення відліку
 
     if "winner" in game_state and game_state["winner"] is not None:
-        screen.fill((20, 20, 20))
+        screen.fill((0, 0, 0))
 
         if you_winner is None:  # Встановлюємо тільки один раз
             if game_state["winner"] == my_id:
@@ -104,6 +104,7 @@ while True:
                 pass
 
     else:
+        screen.fill((0, 0, 0))
         wating_text = font_main.render(f"Очікування гравців...", True, (255, 255, 255))
         screen.blit(wating_text, (WIDTH // 2 - 25, 20))
 
@@ -115,3 +116,4 @@ while True:
         client.send(b"UP")
     elif keys[K_s]:
         client.send(b"DOWN")
+
